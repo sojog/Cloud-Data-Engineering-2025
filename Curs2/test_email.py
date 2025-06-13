@@ -11,7 +11,7 @@ class TestValidareEmail(unittest.TestCase):
         self.assertEqual(2, 2, "Cele doua trebuie sa fie egale...!!!")
 
     def test_de_test(self):
-        time.sleep(1)
+        # time.sleep(1)
         self.assertNotEqual(2, 3, "cele 2 nu trebuie sa fie egale..!!!")
 
 
@@ -51,12 +51,14 @@ class TestValidareEmail(unittest.TestCase):
 
         self.assertFalse(este_valid("a@.tt."))
 
-        # TODO:
-        # self.assertFalse(este_valid("a@..tt"))
-        
-        # TODO:
-        # self.assertFalse(este_valid("a@@.tt"))
 
+    def test_minim_intre_puncte(self):
+        # TODO:
+        self.assertFalse(este_valid("a@..tt"))
+        
+  
+    def test_max_1_coada_de_maimuta(self):
+        self.assertFalse(este_valid("a@@.tt"))
         # TODO:
         self.assertFalse(este_valid("a@-.tt"))
 
