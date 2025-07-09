@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        h1 {
+            color:blue;
+        }
+     </style>
+</head>
+<body>
+
+    <h1> Acesta este un titlu frumos </h1>
+
+  
+
+
+    <script>
+        console.log("Hello World!!!")
+        
+        // Editarea continutului unui element
+        var h1_list = document.getElementsByTagName("h1");
+        var primul_h1 = h1_list[0];
+        primul_h1.innerHTML = "Abra cadabra";
+
+
+        /* Adaugarea unui element dinamic */
+        var new_paragraph = document.createElement("p")
+        new_paragraph.innerHTML = "Paragraf creat dinamic"
+
+
+        // var body = document.getElementsByTagName("body")[0]
+        var body = document.body
+        body.appendChild(new_paragraph)
+
+    </script>
+
+</body>
+</html>

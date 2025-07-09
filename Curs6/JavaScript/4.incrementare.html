@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+     <button onclick="incrementeaza(-1)">-</button>
+    <div id="cos">0</div>
+    <button onclick="incrementeaza(1)">+</button>
+    
+    <script>
+        function incrementeaza(semn){
+            var cos_div = document.getElementById("cos")
+            var rezultat =  Number (cos_div.innerHTML) +  1 * semn
+            if (rezultat < 0) {
+                alert("Nu se poate mai mic decat 0")
+            } else {
+                   cos_div.innerHTML = rezultat
+            }
+         
+        }
+        document.body.style.display = "flex";
+    </script>
+
+</body>
+</html>

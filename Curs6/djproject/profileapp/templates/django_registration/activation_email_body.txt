@@ -1,8 +1,8 @@
+Pentru a activa contul, te rog să accesezi următorul link:
 
-Pentru a activa contul trebuie sa apesi pe urmatorul link http://{{site}}/accounts/activate/{{activation_key}}/
+http://{{ site.domain }}/accounts/activate/{{ activation_key }}/
 
+Acest link va expira în {{ expiration_days }} zile.
 
-Hai sa incercam:
-
-http://{{ site }}{% url 'registration_activate' activation_key=activation_key %}
+Mulțumim pentru înregistrare!
 

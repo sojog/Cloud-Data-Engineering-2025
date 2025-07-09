@@ -21,6 +21,8 @@ from django.urls import include
 from django_registration.backends.activation.views import ActivationView
 
 urlpatterns = [
+    path('accounts/activate/<str:activation_key>/', ActivationView.as_view(), name='registration_activate'),
+
     path('admin/', admin.site.urls),
 
     ## SE ACTIVEAZA AUTOMAT CONTUL
@@ -29,12 +31,6 @@ urlpatterns = [
     ## TODO: SCHIMBAM one_step CU activation
     path("accounts/", include("django_registration.backends.activation.urls")), 
   
-  
-    
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('profileapp.urls')),
-
-    
-    path('accounts/activate/<str:activation_key>/', ActivationView.as_view(), name='registration_activate'),
-      
 ]

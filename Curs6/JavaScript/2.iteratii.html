@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            background-color: chartreuse;
+        }
+
+    </style>
+</head>
+<body>
+
+    <ol> </ol>
+
+    <script>
+       const colors = ["red", "black", "aqua", "fuchsia", "blue", "yellow"]
+
+        var ordered_list = document.querySelector("ol")
+
+        for (let i = 0; i < colors.length; i++) {
+            const new_color = colors[i];
+
+            var new_li = document.createElement("li")
+            new_li.innerHTML = new_color
+
+            new_li.style.backgroundColor = new_color
+
+
+            ordered_list.appendChild(new_li)
+            
+        }
+
+
+    </script>
+
+    
+</body>
+</html>

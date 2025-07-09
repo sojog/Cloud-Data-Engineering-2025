@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tabla {
+            display:grid;
+            background-color: aqua;
+            aspect-ratio: 1/1;
+            height: min(80vh, 80vw);
+            grid-template-columns: repeat(8, 1fr); 
+        }
+        .patrat{
+            background-color: red;
+            border-color: black;
+            border-width: 3px;
+            border-style: solid;
+            color:white;
+        }
+        .patrat.dark{
+            background-color: black;
+        }
+     
+
+    </style>
+</head>
+<body>
+
+    <div id="tabla">
+        
+    </div>
+    
+    <select name="" id="latime" onchange=" update_squares()" value="8">
+     
+    </select>
+    
+    <script>
+
+        var select = document.getElementById("latime")
+        for (let i = 2; i < 17; i++) {
+            var new_option = document.createElement("option")
+            new_option.value = i
+            new_option.innerHTML = i + " patratele"
+            select.appendChild(new_option)
+        }
+        var SIZE = 8
+
+
+        function update_squares() {
+                var SIZE = select.value;
+                var tabla_div = document.getElementById("tabla")
+                tabla_div.innerHTML = ""
+                tabla_div.style.gridTemplateColumns = "repeat("  + SIZE + ", 1fr)"
+
+                for (let i = 0; i < SIZE * SIZE; i++) {
+                    var new_div = document.createElement("div")
+                    new_div.classList.add("patrat")
+                    tabla_div.appendChild(new_div)
+                    
+                }
+
+                var patrate = document.getElementsByClassName("patrat")
+                for (let i = 0; i < patrate.length; i++) {
+
+
+                    const element = patrate[i];
+
+                    if (SIZE % 2 == 0) {
+                                if (Math.floor(i / SIZE) % 2  == 0) {
+                            if ( i % 2 == 0) {      
+                                element.classList.add("dark")
+                            }
+                            } else {
+                                    if ( i % 2 != 0) {           
+                                        element.classList.add("dark")
+                                    }
+                            }    
+                    } else {
+                        if ( i % 2 == 0) {      
+                                element.classList.add("dark")
+                        }
+                    }
+                    element.innerHTML = i;
+                    
+                }
+        }
+        update_squares()
+
+
+        
+
+    </script>
+
+    
+</body>
+</html>
