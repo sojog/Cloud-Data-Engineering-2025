@@ -6,11 +6,12 @@
     <title>Document</title>
     <style>
         body {
-            display:flex;
-            align-items:center;
-            justify-content:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        #tabla{
+
+        #tabla {
             width: 80vw;
             aspect-ratio: 1/1;
             background-color: aquamarine;
@@ -18,23 +19,24 @@
             display: grid;
             grid-template-columns: repeat(8, 1fr);
         }
+
         .patratel {
-            display:flex;
-            align-items:center;
-            justify-content:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-color: brown;
             border-style: solid;
             border-width: 2px;
         }
+
         .patratel.dark {
             background-color: black;
-            color:white;
+            color: white;
         }
-
     </style>
 </head>
 <body>
-    
+
     <main>
         <div id="tabla">
 
@@ -52,30 +54,46 @@
         for (let i = 2; i < 17; i++) {
             var option = document.createElement("option")
             option.value = i
-            option.innerHTML =  i + " patratele"
+            option.innerHTML = i + " patratele"
             select_element.appendChild(option)
             if (i === patratele_initiale) {
                 option.selected = true
             }
         }
 
-        for (let i = 0; i < patratele_initiale * patratele_initiale; i++) {
-            var new_div = document.createElement("div")
-            new_div.className = "patratel"
-            new_div.innerHTML = i
-            tabla.appendChild(new_div)
-
-            var restul = i % patratele_initiale
-            var catul = Math.floor(i / patratele_initiale)
+        select_element.onchange = () => {
+            console.log("valoarea selectata este:", select_element.value)
+            creaza_patratele(select_element.value)
+        }
 
 
-            if ( (restul + catul) % 2 == 0 ) {
-                new_div.classList.add("dark")
+        function creaza_patratele(nr_patratele) {
+
+            tabla.innerHTML = ""
+
+            for (let i = 0; i < nr_patratele * nr_patratele; i++) {
+                var new_div = document.createElement("div")
+                new_div.className = "patratel"
+                new_div.innerHTML = i
+                tabla.appendChild(new_div)
+
+                var restul = i % nr_patratele
+                var catul = Math.floor(i / nr_patratele)
+
+
+                if ((restul + catul) % 2 == 0) {
+                    new_div.classList.add("dark")
+                }
+
+                tabla.style.gridTemplateColumns = "repeat(" + nr_patratele +  ", 1fr)";
+ 
+
+
             }
-         
-            
 
         }
+
+        creaza_patratele(patratele_initiale)
 
     </script>
 
