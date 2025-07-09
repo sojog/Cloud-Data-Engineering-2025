@@ -11,38 +11,87 @@
             align-items: center;
             justify-content: center;
         }
+        .toggle {
+            width:60px;
+            height:30px;
+            background-color: lightgrey;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+     
+        }
+        .toggle.active{
+            background-color: purple;
+            justify-content: flex-end;
+        }
+        .switch {
+            height: 27px;
+            width: 27px;
+            border-radius: 100%;
+            background-color: white;
+            margin: 0 3px;
+        }
     </style>
 </head>
 <body>
 
     <main>
         <h1>How do you want your project to be?</h1>
-        <div><input type="checkbox" name="bun" id="" onchange="select_property(this) " > <label for="bun">Good</label></div>
+     
 
-        <div> <input type="checkbox" name="ieftin" id="" onchange="select_property(this) "> <label for="ieftin">Cheap</label></div>
-        <div><input type="checkbox" name="rapid" id="" onchange="select_property(this) "> <label for="rapid">Fast</label></div>
+        <div class="toggle" >
+            <div class="switch"></div>
+        </div>
+        <label for="bun">Good</label>
+
+         <div class="toggle">
+            <div class="switch"></div>
+        </div>
+        <label for="ieftin">Cheap</label>
+
+         <div class="toggle">
+            <div class="switch"></div>
+        </div>
+        <label for="rapid">Fast</label>
+
+
     </main>
 
     <script>
-        var inputs = document.getElementsByTagName("input")
+        var toggle_list = document.getElementsByClassName("toggle")
+        for (let i = 0; i < toggle_list.length; i++) {
+            const element = toggle_list[i];
+            element.addEventListener("click",() => {
+                select_property(element)
+            })
+            
+        }
+
+
         const MAX_SELECTED = 2
 
         var total_selected = []
 
         function select_property(selected_input) {
             console.log("a fost selecta inputul:", selected_input)
-            console.log("starea este:", selected_input.checked)
+            console.log("selected_input.style.classList", selected_input.classList)
 
-            if (selected_input.checked === true) {
+            if ( selected_input.classList.contains("active") === false ) {
                 total_selected.push(selected_input)
+
+                selected_input.classList.add("active") 
+
+
             } else {
                 total_selected.pop(selected_input)
+
+                selected_input.classList.remove("active") 
             }
 
             console.log("avem in total selectate:", total_selected.length)
 
             if (total_selected.length > MAX_SELECTED) {
-                total_selected[0].checked = false
+                total_selected[0].classList.remove("active") 
                 total_selected.splice(0,1)
             }
 
